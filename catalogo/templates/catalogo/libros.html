@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>inicio</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/estilos.css' %}">
+
+</head>
+<body>
+    <h1>pagina principal</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit exercitationem, hic, ad perspiciatis fugiat cum placeat iure doloribus necessitatibus tempore corrupti laborum alias officia sunt facilis expedita. Vitae, delectus dolorem!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Mostrando en tabla los alumnos registrados -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">id libro</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Año</th>
+                            <th scope="col">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for Libro in Libros %}
+                        <tr>
+                            <th scope="row">{{ Libro.id_libro }}</th>
+                            <td>{{ Libro.titulo }}</td>
+                            <td>{{ Libro.anio }}</td>
+                            <td>{{ Libro.descripcion_l}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
