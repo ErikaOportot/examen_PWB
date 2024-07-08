@@ -4,5 +4,7 @@ h1{
 
 p{
     padding: auto;
-    background-color: blue;
+    background-color: rgb(255, 55, 0);
+    text-align: justify;
+    color:bisque;
 }
