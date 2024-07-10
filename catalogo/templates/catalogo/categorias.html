@@ -82,16 +82,20 @@
             </div>            
         </div>
 
-        <div class="row"  style= "place-items: center">
+        <div class="row">
             <div class="col-lg-12 my-5" data-aos="fade-down-right" data-aos-duration="2500">
                 <div class="card">
                     <span class="card__title">¡Suscribete Gratis!</span>
                     <p class="card__content">¡Entérate todas las noticias y new arrivals que tenemos cada semana!
                     </p>
                     <div class="card__form">
-                        <input placeholder="Tu email" type="text">
-                        <input placeholder="Tu nombre" type="text">
-                        <button class="sign-up"> Registrarme</button>
+                        <label for="name">
+                            <input type="text" name="Nombre" id="name" placeholder="Ingrese su nombre" required>
+                            </label>
+                            <label for="mail">
+                                <input type="email" name="Mail" id="Mail" placeholder="correo@gmail.cl" required>
+                            </label>
+                        <button class="sign-up" onclick="ingresarDatos()"> Registrarme</button>
                     </div>
                 </div>
             </div>
@@ -143,6 +147,23 @@
                     }
                   }      
             });
+
+            function ingresarDatos(){
+                Swal.fire({
+                    title: "¿La información que ingresaste esta correcta?",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "si!",
+                    denyButtonText: `No me suscribas`
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                    Swal.fire("¡Tu correo se ha guardado con exito!", "", "éxito");
+                    } else if (result.isDenied) {
+                    Swal.fire("La información no se ha guardado", "", "info");
+                    }
+                });
+            }
         </script> 
 
 <html>
