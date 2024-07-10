@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>inicio</title>
+    <title>Categorías</title>
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'assets/css/estilos.css' %}">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/estilos.css' %}">
 
 </head>
 <style>
@@ -40,56 +41,127 @@
       </nav>
 
 
-      
-      <div class="container">  
+    <div class="container">  
         <div class="row">
             <div class="col lg 6"style="center">
                 <h1><img src="{% static 'assets/images/logo.png' %}" alt="" width="400px" length="800px"></h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8" >
-                <!-- Mostrando en tabla los alumnos registrados -->
-                <table class="table table-striped Glass"style="center">
-                    <thead>
-                        <tr>
-                            <th scope="col">id Categoría</th>
-                            <th scope="col">Categoría</th>
-                            <th scope="col">Descripción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for Categoria in Categorias %}
-                        <tr>
-                            <th scope="row">{{ Categoria.id_categoria}}</th>
-                            <td>{{ Categoria.nombre_categoria }}</td>
-                            <td>{{ Categoria.descripcion }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="col lg-12" data-aos="fade-down" data-aos-easing="linear"data-aos-duration="1500">
+                <p>Explora nuestra diversa gama de categorías de libros para encontrar la lectura perfecta para cualquier estado de ánimo o interés. Ya sea que disfrutes de emocionantes aventuras, relatos románticos o profundos trabajos filosóficos, nuestra selección categorizada hace que sea fácil encontrar lo que buscas</p>
             </div>
         </div>
+
+        <div class="row" >
+            <div class="col-lg-12 my-5">
+                <table id="myTable_cat" class="display Glass" style="width:100%" >
+                    <thead>
+                        <tr>
+                            <th>id Categoría</th>
+                            <th>Categoría</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody >                                       
+                        {% for Categoria in Categorias %}
+                        <tr>
+                            <td>{{ Categoria.id_categoria }}</td>
+                            <td>{{ Categoria.nombre_categoria }}</td>
+                            {% comment %} {{ Libro.descripcion_libro }} {% endcomment %}
+                            <td>
+                                <details>
+                                <summary>Ver más...</summary>
+                                <p>{{ Categoria.descripcion}}</p>
+                            </details>
+                        </td>
+                        </tr>
+                        {% endfor %}                   
+                    </tbody>              
+                </table>
+            </div>            
+        </div>
+
+        <div class="row"  style= "place-items: center">
+            <div class="col-lg-12 my-5" data-aos="fade-down-right" data-aos-duration="2500">
+                <div class="card">
+                    <span class="card__title">¡Suscribete Gratis!</span>
+                    <p class="card__content">¡Entérate todas las noticias y new arrivals que tenemos cada semana!
+                    </p>
+                    <div class="card__form">
+                        <input placeholder="Tu email" type="text">
+                        <input placeholder="Tu nombre" type="text">
+                        <button class="sign-up"> Registrarme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         
+ 
 
-  
+        
     
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    
+    
+        
+        <script>
+            $(document).ready(function(){
+                //INICIALIZANDO COMPONENTES
+                AOS.init();
+                console.log('AOS se ha iniciado');
+            });
+
+            new DataTable('#myTable_cat', { 
+                "language":{
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                      "sFirst": "Primero",
+                      "sLast": "Último",
+                      "sNext": ">",
+                      "sPrevious": "<"
+                    },
+                    "oAria": {
+                      "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                  }      
+            });
+        </script> 
+
+<html>
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-    <script>
-        $(document).ready(function(){
-            //INICIALIZANDO COMPONENTES
-            AOS.init();
-            console.log('AOS se ha iniciado');
-        });
 
-    </script>
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+       
