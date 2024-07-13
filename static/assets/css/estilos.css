@@ -32,14 +32,16 @@ p{
     padding: 23px;
     text-align: justify;
     color:bisque;
-    background: rgba(87, 45, 45, 0.61);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(1.1px);
-    -webkit-backdrop-filter: blur(1.1px);
-    border: 1px solid rgba(87, 45, 45, 0.3);
+    background: rgba(58, 34, 34, 0.62);
     border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.4px);
+    -webkit-backdrop-filter: blur(15.4px);
+    border: 1px solid rgba(58, 34, 34, 0.11);
   
 }
+
+
 
 td,th{
     color:bisque;
@@ -50,17 +52,42 @@ tr{
     text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
+.description {
+  position: relative;
+}
+
+.showMoreBtn {
+  display: block;
+  margin-top: 10px;
+  background-color: bisque;
+  color:rgba(53, 23, 23, 0.941) ;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.showMoreBtn:hover {
+  background-color: rgba(103, 99, 38, 0.3) ;
+}
+
+
 
 .Glass{
   
-  background: rgba(50, 22, 22, 0.37);
+  background: rgba(58, 34, 34, 0.62);
+  border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(50, 22, 22, 0.3);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(58, 34, 34, 0.11);
 }
 
-/* Aumentamos el tamaño de fuente y el espacio alrededor de los datos */
+
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   padding: 8px; /* Espacio alrededor de los botones de paginación */
 }

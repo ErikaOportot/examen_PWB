@@ -73,21 +73,23 @@
                         </thead>
                         <tbody >                                       
                             {% for Libro in Libros %}
-                            <tr>
+                            <tr >
                                 <td>{{ Libro.id_libro }}</td>
                                 <td>{{ Libro.titulo }}</td>
-                                <td>{{ Libro.anio }}</td>
-                                {% comment %} {{ Libro.descripcion_libro }} {% endcomment %}
+                                <td> {{ Libro.anio }}</td>
                                 <td>
-                                    <details>
-                                    <summary>Ver más...</summary>
-                                    <p>{{ Libro.descripcion_l }}</p>
-                                </details>
-                            </td>
+                                    <div class="descripcion">
+                                        <span class="full-desc hidden">{{ Libro.descripcion_l }}</span>
+                                        <button class="showMoreBtn">Ver Más</button>
+                                    </div>
+                                </td>
+                        
+                                 
                             </tr>
                             {% endfor %}                   
                         </tbody>              
                     </table>
+                   
                 </div>            
             </div>
         </div>
@@ -132,6 +134,14 @@
                       "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                   }      
+            });
+            $(document).ready(function(){
+                $(".showMoreBtn").on("click", function(){
+                    var $fullDesc = $(this).siblings(".full-desc");
+                    $fullDesc.toggleClass("hidden");
+                    var btnText = $fullDesc.hasClass("hidden") ? "Ver Más" : "Ver Menos";
+                    $(this).text(btnText);
+                });
             });
         </script> 
 

@@ -98,7 +98,7 @@
             <h1 class="display-4" style="background-color: #650B21; color: bisque;">Literatura inglesa a tu alcance</h1>
             <p class="lead"style="text-align: center">
              los mejores títulos y autores los puedes encontrar en un solo lugar!</p>
-            {% comment %} SE AÑADE URLS AL JUMBOTRON falta quitar el del inicio {% endcomment %}
+
             {% for Navbar in Navbars %}
             <a class="btn" style="background-color: bisque; color: gray;" href="{{ Navbar.url }}" role="button">{{ Navbar.nombre }}</a>
             {% endfor %}

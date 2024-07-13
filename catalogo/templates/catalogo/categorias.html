@@ -73,17 +73,17 @@
                         <tr>
                             <td>{{ Categoria.id_categoria }}</td>
                             <td>{{ Categoria.nombre_categoria }}</td>
-                            {% comment %} {{ Libro.descripcion_libro }} {% endcomment %}
                             <td>
-                                <details>
-                                <summary>Ver más...</summary>
-                                <p>{{ Categoria.descripcion}}</p>
-                            </details>
-                        </td>
+                                <div class="description">
+                                    <span class="full-desc hidden">{{ Categoria.descripcion}}</span>
+                                    <button class="showMoreBtn">Ver Más</button>
+                                </div>
+                            </td>
                         </tr>
                         {% endfor %}                   
                     </tbody>              
                 </table>
+             
             </div>            
         </div>
 
@@ -169,6 +169,15 @@
                     }
                 });
             }
+
+            $(document).ready(function(){
+                $(".showMoreBtn").on("click", function(){
+                    var $fullDesc = $(this).siblings(".full-desc");
+                    $fullDesc.toggleClass("hidden");
+                    var btnText = $fullDesc.hasClass("hidden") ? "Ver Más" : "Ver Menos";
+                    $(this).text(btnText);
+                });
+            });
         </script> 
 
 <html>
